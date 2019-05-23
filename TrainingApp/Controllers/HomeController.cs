@@ -13,10 +13,16 @@ namespace TrainingApp.Controllers
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
+        //public ActionResult Fibonacci()
+        //{
+        //    ViewBag.Message = "Enter the length of the Fibonacci sequence";
 
+        //    return View();
+        //}
+
+        public ActionResult Fibonacci(string length = "")
+        {
+            ViewBag.sequence = length;
             return View();
         }
 
