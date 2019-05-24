@@ -1,19 +1,20 @@
 ﻿@{
     ViewBag.Title = "Fibonacci";
-    var seq = ViewBag.sequence;
+    var seq = ViewBag.Sequence;
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
-<form method="get">
+<form method="post">
     <fieldset>
         <p>
             <label for="length">Length:</label>
             <input type="text" name="length" value="@Request.Form["length"]" />
         </p>
-        <p><input type="submit" name="buttonSubmit" value="Show the sequence" /></p>
+        <text>
+            You entered:@Request.Form["length"] <br />
+            Sequence: @seq <br />
+        </text>
     </fieldset>
 </form>
-<p>
-    <label for="sequence">sequence:</label>
-    <input type="text" name="sequence" value=@seq /></>
-</p>
+
+

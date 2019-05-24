@@ -13,16 +13,36 @@ namespace TrainingApp.Controllers
             return View();
         }
 
-        //public ActionResult Fibonacci()
-        //{
-        //    ViewBag.Message = "Enter the length of the Fibonacci sequence";
-
-        //    return View();
-        //}
-
-        public ActionResult Fibonacci(string length = "")
+        public ActionResult Fibonacci()
         {
-            ViewBag.sequence = length;
+            ViewBag.Message = "Enter the length of the Fibonacci sequence";
+            ViewBag.Sequence = "";
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Fibonacci(string length)
+        {
+            ViewBag.Message = "Enter the length of the Fibonacci sequence";
+            if (int.TryParse(length, out int sequenceLength))
+            {
+                try
+                {
+                    ViewBag.Sequence = Models.Fibonacci.ToString(Models.Fibonacci.GetFibonacciNumbers(sequenceLength));
+                }
+                catch (OverflowException)
+                {
+                    ViewBag.Sequence = $"Please enter length less than {length}";
+                }
+                catch
+                {
+                    ViewBag.Sequence = $"Something went wrong";
+                }
+            }
+            else
+            {
+                ViewBag.Sequence = "Length is not a number";
+            }
             return View();
         }
 
